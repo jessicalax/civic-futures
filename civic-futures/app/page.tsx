@@ -72,11 +72,9 @@ export default function UploadPage() {
         className="success-wrap"
         style={{ ['--theme-color' as string]: success.theme.color }}
       >
-        <div className="success-icon">✨</div>
+        <div className="success-icon">✦</div>
         <h1>Thank you</h1>
-        <p style={{ color: '#94a3b8', marginTop: '8px' }}>
-          Your vision is part of the room.
-        </p>
+        <p className="sub">Your vision is part of the room.</p>
         <div className="success-quote">&ldquo;{success.quote}&rdquo;</div>
         <div className="success-theme">
           Added to <strong>{success.theme.name}</strong>
@@ -91,6 +89,7 @@ export default function UploadPage() {
   return (
     <div className="upload-wrap">
       <div className="upload-header">
+        <div className="upload-eyebrow">Center for Civic Futures</div>
         <h1>Your civic future</h1>
         <p>
           Take a photo of what you wrote. Your vision will join the room&apos;s on the big

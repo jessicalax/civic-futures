@@ -8,6 +8,7 @@ A real-time tool for a summit breakout. Participants write their civic future by
 - **`/display`** — Projector-friendly live view. Theme cards with count + 3 most recent quotes per theme. Auto-refreshes every 2.5 seconds.
 - **`/qr`** — A scannable QR code that points back to the upload page. Project this before the breakout so people can scan.
 - **`/admin`** — Password-protected reset (clears all submissions). Run this between sessions.
+- **`/results`** — Password-protected. View ALL submissions grouped by theme (full transcription + distilled quote + timestamp). Download as CSV.
 
 ## Pre-event setup (15 minutes)
 

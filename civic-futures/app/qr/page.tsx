@@ -21,10 +21,11 @@ export default function QRPage() {
 
   return (
     <div className="center-wrap">
-      <h1 style={{ fontSize: 40, marginBottom: 8, letterSpacing: '-0.02em' }}>
-        Share your civic future
-      </h1>
-      <p style={{ color: '#94a3b8', marginBottom: 32, fontSize: 18 }}>
+      <div className="upload-eyebrow" style={{ marginBottom: 16 }}>
+        Center for Civic Futures
+      </div>
+      <h1>Share your civic future</h1>
+      <p style={{ color: 'var(--olive-brown-soft)', marginBottom: 32, fontSize: 18 }}>
         Scan with your phone camera
       </p>
       <div className="qr-card">

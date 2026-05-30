@@ -29,20 +29,17 @@ const THEMES_KEY = 'cf:themes';             // hash: name -> JSON(Theme)
 const ORDER_KEY = 'cf:order';               // list: submission ids in arrival order
 const THEME_ORDER_KEY = 'cf:themeOrder';    // list: theme names in creation order
 
-// A pleasant palette for theme cards. Cycled through as new themes appear.
+// CCF brand palette for theme cards. Cycled through as new themes appear.
+// Derived from Royal Blue / Olive Brown / Mint / Rosé brand colors.
 const COLORS = [
-  '#7C3AED', // purple
-  '#0EA5E9', // sky
-  '#F59E0B', // amber
-  '#10B981', // emerald
-  '#EF4444', // red
-  '#EC4899', // pink
-  '#6366F1', // indigo
-  '#14B8A6', // teal
-  '#F97316', // orange
-  '#84CC16', // lime
-  '#8B5CF6', // violet
-  '#06B6D4', // cyan
+  '#0068cc', // royal blue (brand primary)
+  '#524e34', // olive brown (brand neutral)
+  '#c73e8e', // rose-deep (brand accent saturated)
+  '#4a8c3f', // forest (mint pushed deeper for legibility)
+  '#b8893a', // mustard (warm complement)
+  '#7a3d8e', // plum (cool complement)
+  '#0052a3', // deeper royal blue
+  '#3f6b8c', // muted blue-grey
 ];
 
 export async function getThemes(): Promise<Theme[]> {
@@ -69,6 +66,15 @@ export async function getSubmissions(ids: string[]): Promise<Submission[]> {
 
 export async function getRecentSubmissionIds(limit: number): Promise<string[]> {
   return (await redis.lrange<string>(ORDER_KEY, 0, limit - 1)) ?? [];
+}
+
+export async function getAllSubmissionIds(): Promise<string[]> {
+  return (await redis.lrange<string>(ORDER_KEY, 0, -1)) ?? [];
+}
+
+export async function getAllSubmissions(): Promise<Submission[]> {
+  const ids = await getAllSubmissionIds();
+  return getSubmissions(ids);
 }
 
 export async function getTotalSubmissionCount(): Promise<number> {
