@@ -1,0 +1,476 @@
+/* ============================================================
+   Center for Civic Futures — brand styling
+   Off White #fff9ee · Royal Blue #0068cc · Olive Brown #524e34
+   Mint Green #c3fdb5 · Rosé #fde2f4
+   Headlines: Bricolage Grotesque · Body: Space Grotesk
+   ============================================================ */
+
+:root {
+  --off-white: #fff9ee;
+  --royal-blue: #0068cc;
+  --royal-blue-dark: #0052a3;
+  --olive-brown: #524e34;
+  --olive-brown-soft: #7a755a;
+  --mint: #c3fdb5;
+  --mint-deep: #6fb36f;
+  --rose: #fde2f4;
+  --rose-deep: #c73e8e;
+  --line: rgba(82, 78, 52, 0.16);
+  --line-soft: rgba(82, 78, 52, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-body), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--off-white);
+  color: var(--olive-brown);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--olive-brown);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- Site-wide header (logo top-left) ---------- */
+.site-header {
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  background: var(--off-white);
+}
+
+.site-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .site-header {
+    padding: 22px 56px;
+  }
+  .site-logo {
+    height: 38px;
+  }
+}
+
+/* ---------- Reusable buttons ---------- */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 28px;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--royal-blue);
+  color: var(--off-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--royal-blue-dark);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--olive-brown);
+  border: 1.5px solid var(--olive-brown);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--olive-brown);
+  color: var(--off-white);
+}
+
+/* ============================================================
+   Upload page — mobile
+   ============================================================ */
+.upload-wrap {
+  min-height: calc(100dvh - 68px);
+  padding: 12px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  background: var(--off-white);
+}
+
+.upload-header {
+  margin-bottom: 28px;
+}
+
+.upload-eyebrow {
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--royal-blue);
+  margin-bottom: 14px;
+}
+
+.upload-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.05;
+}
+
+.upload-header p {
+  color: var(--olive-brown-soft);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.photo-slot {
+  flex: 1;
+  min-height: 280px;
+  border: 1.5px dashed var(--line);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background: white;
+  position: relative;
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-slot .placeholder {
+  text-align: center;
+  color: var(--olive-brown-soft);
+  padding: 24px;
+}
+
+.photo-slot .placeholder .big {
+  font-size: 44px;
+  margin-bottom: 14px;
+  filter: grayscale(0.3);
+}
+
+.photo-actions {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.error-msg {
+  color: var(--rose-deep);
+  background: var(--rose);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin-top: 12px;
+  font-size: 14px;
+  border-left: 3px solid var(--rose-deep);
+}
+
+/* ============================================================
+   Success state (after upload)
+   ============================================================ */
+.success-wrap {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--off-white);
+}
+
+.success-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.success-wrap h1 {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.success-wrap .sub {
+  color: var(--olive-brown-soft);
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.success-quote {
+  font-family: var(--font-display), serif;
+  font-size: 24px;
+  line-height: 1.35;
+  margin: 32px 0 24px;
+  padding: 24px 28px;
+  border-left: 4px solid var(--theme-color, var(--royal-blue));
+  background: white;
+  border-radius: 0 4px 4px 0;
+  text-align: left;
+  color: var(--olive-brown);
+  max-width: 520px;
+  width: 100%;
+}
+
+.success-theme {
+  color: var(--olive-brown-soft);
+  font-size: 14px;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
+
+.success-theme strong {
+  color: var(--theme-color, var(--royal-blue));
+  font-weight: 700;
+}
+
+/* ============================================================
+   Display page — projector
+   ============================================================ */
+.display-wrap {
+  min-height: calc(100dvh - 82px);
+  padding: 24px 56px 56px;
+  background: var(--off-white);
+}
+
+.display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1.5px solid var(--line);
+}
+
+.display-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--royal-blue);
+  margin-bottom: 12px;
+}
+
+.display-title {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.display-count {
+  color: var(--olive-brown-soft);
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  padding-bottom: 6px;
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+}
+
+.theme-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.theme-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--theme-color);
+}
+
+.theme-name {
+  font-family: var(--font-display), sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  color: var(--theme-color);
+  line-height: 1.15;
+}
+
+.theme-count {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--line-soft);
+  color: var(--olive-brown);
+  margin-bottom: 18px;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.theme-summary {
+  font-size: 14px;
+  color: var(--olive-brown-soft);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.theme-quotes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.theme-quote {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--olive-brown);
+  padding-left: 14px;
+  border-left: 2px solid var(--line);
+  font-style: italic;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 100px 20px;
+  color: var(--olive-brown-soft);
+}
+
+.empty-state h2 {
+  font-size: 32px;
+  margin-bottom: 14px;
+  color: var(--olive-brown);
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-card {
+  animation: fadeIn 0.5s ease;
+}
+
+/* ============================================================
+   QR + admin shared layout
+   ============================================================ */
+.center-wrap {
+  min-height: calc(100dvh - 68px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 24px 40px;
+  text-align: center;
+  background: var(--off-white);
+  color: var(--olive-brown);
+}
+
+.center-wrap h1 {
+  font-size: 44px;
+  margin-bottom: 12px;
+  line-height: 1.05;
+}
+
+.qr-card {
+  background: white;
+  padding: 32px;
+  border-radius: 6px;
+  display: inline-block;
+  border: 1px solid var(--line);
+}
+
+.qr-url {
+  margin-top: 24px;
+  font-family: 'SF Mono', Monaco, monospace;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 14px 22px;
+  border-radius: 4px;
+  font-size: 15px;
+  word-break: break-all;
+  max-width: 480px;
+  color: var(--royal-blue);
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.admin-form input {
+  padding: 16px 18px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--line);
+  background: white;
+  color: var(--olive-brown);
+  font-family: inherit;
+}
+
+.admin-form input::placeholder {
+  color: var(--olive-brown-soft);
+}
+
+.admin-form input:focus {
+  outline: none;
+  border-color: var(--royal-blue);
+}
