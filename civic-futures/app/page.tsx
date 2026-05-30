@@ -15,7 +15,8 @@ export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<SuccessData | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
+  const libraryInputRef = useRef<HTMLInputElement>(null);
 
   function pickFile(f: File) {
     if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -37,7 +38,8 @@ export default function UploadPage() {
     setStatus('idle');
     setError(null);
     setSuccess(null);
-    if (inputRef.current) inputRef.current.value = '';
+    if (cameraInputRef.current) cameraInputRef.current.value = '';
+    if (libraryInputRef.current) libraryInputRef.current.value = '';
   }
 
   async function handleSubmit() {
@@ -73,7 +75,7 @@ export default function UploadPage() {
         style={{ ['--theme-color' as string]: success.theme.color }}
       >
         <div className="success-icon">✦</div>
-        <h1>Thank you</h1>
+        <h1>Thank You</h1>
         <p className="sub">Your vision is part of the room.</p>
         <div className="success-quote">&ldquo;{success.quote}&rdquo;</div>
         <div className="success-theme">
@@ -89,8 +91,7 @@ export default function UploadPage() {
   return (
     <div className="upload-wrap">
       <div className="upload-header">
-        <div className="upload-eyebrow">Center for Civic Futures</div>
-        <h1>Your civic future</h1>
+        <h1>Your Civic Future</h1>
         <p>
           Take a photo of what you wrote. Your vision will join the room&apos;s on the big
           screen.
@@ -108,20 +109,39 @@ export default function UploadPage() {
         )}
       </div>
 
+      {/* Two file inputs: one opens the camera, one opens the photo library */}
       <input
-        ref={inputRef}
+        ref={cameraInputRef}
         type="file"
         accept="image/*"
         capture="environment"
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />
+      <input
+        ref={libraryInputRef}
+        type="file"
+        accept="image/*"
+        style={{ display: 'none' }}
+        onChange={handleFileChange}
+      />
 
       <div className="photo-actions">
         {status === 'idle' && (
-          <button className="btn btn-primary" onClick={() => inputRef.current?.click()}>
-            📷 Take photo
-          </button>
+          <>
+            <button
+              className="btn btn-primary"
+              onClick={() => cameraInputRef.current?.click()}
+            >
+              📷 Take a Photo
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => libraryInputRef.current?.click()}
+            >
+              🖼 Upload from Library
+            </button>
+          </>
         )}
 
         {status === 'preview' && (
@@ -129,8 +149,8 @@ export default function UploadPage() {
             <button className="btn btn-primary" onClick={handleSubmit}>
               Submit
             </button>
-            <button className="btn btn-secondary" onClick={() => inputRef.current?.click()}>
-              Retake
+            <button className="btn btn-secondary" onClick={reset}>
+              Retake or Choose Another
             </button>
           </>
         )}
@@ -145,10 +165,10 @@ export default function UploadPage() {
           <>
             <div className="error-msg">{error}</div>
             <button className="btn btn-primary" onClick={handleSubmit}>
-              Try again
+              Try Again
             </button>
             <button className="btn btn-secondary" onClick={reset}>
-              Start over
+              Start Over
             </button>
           </>
         )}

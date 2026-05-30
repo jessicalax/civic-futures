@@ -63,10 +63,7 @@ export default function DisplayPage() {
   return (
     <div className="display-wrap">
       <div className="display-header">
-        <div>
-          <div className="display-eyebrow">Center for Civic Futures</div>
-          <div className="display-title">Our civic futures</div>
-        </div>
+        <div className="display-title">Our Civic Futures</div>
         <div className="display-count">
           {state.totalCount} {state.totalCount === 1 ? 'vision' : 'visions'} ·{' '}
           {state.themes.length} {state.themes.length === 1 ? 'theme' : 'themes'}
@@ -75,7 +72,7 @@ export default function DisplayPage() {
 
       {!hasSubmissions ? (
         <div className="empty-state">
-          <h2>Waiting for the first vision…</h2>
+          <h2>Waiting for the First Vision…</h2>
           <p>Scan the QR code to share yours.</p>
         </div>
       ) : (

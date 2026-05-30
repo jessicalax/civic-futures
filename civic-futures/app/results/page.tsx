@@ -82,7 +82,7 @@ export default function ResultsPage() {
     return (
       <div className="center-wrap">
         <h1 style={{ fontSize: 32, marginBottom: 8, letterSpacing: '-0.02em' }}>
-          All submissions
+          All Submissions
         </h1>
         <p style={{ color: '#94a3b8', marginBottom: 24 }}>Enter the admin password to view</p>
         <div className="admin-form">
@@ -135,7 +135,7 @@ export default function ResultsPage() {
     <div className="display-wrap">
       <div className="display-header">
         <div>
-          <div className="display-title">All submissions</div>
+          <div className="display-title">All Submissions</div>
           <div className="display-count" style={{ marginTop: 6 }}>
             {data.totalCount} total · {data.themes.length} themes
           </div>

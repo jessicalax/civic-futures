@@ -21,12 +21,9 @@ export default function QRPage() {
 
   return (
     <div className="center-wrap">
-      <div className="upload-eyebrow" style={{ marginBottom: 16 }}>
-        Center for Civic Futures
-      </div>
-      <h1>Share your civic future</h1>
+      <h1>Share Your Civic Future</h1>
       <p style={{ color: 'var(--olive-brown-soft)', marginBottom: 32, fontSize: 18 }}>
-        Scan with your phone camera
+        Scan with Your Phone Camera
       </p>
       <div className="qr-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}

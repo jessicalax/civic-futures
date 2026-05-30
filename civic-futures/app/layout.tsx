@@ -33,10 +33,19 @@ export const viewport: Viewport = {
   themeColor: '#fff9ee',
 };
 
+const LOGO_URL =
+  'https://cdn.prod.website-files.com/6914a9f0a2646df60cc1f921/6914ae1a884d5b206e9719e1_horizontal%20logo.svg';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${bricolage.variable} ${spaceGrotesk.variable}`}>
-      <body>{children}</body>
+      <body>
+        <header className="site-header">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={LOGO_URL} alt="Center for Civic Futures" className="site-logo" />
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
